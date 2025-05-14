@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Binary Conversion MCQ Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      padding: 20px;
+    }
+    .quiz-container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #333;
+    }
+    .question {
+      margin-bottom: 15px;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .options label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+    #submitBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #submitBtn:hover {
+      background: #0056b3;
+    }
+    #score {
+      margin-top: 20px;
+      font-size: 20px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h2>Binary Conversion MCQ Quiz</h2>
+    <form id="quizForm">
+      <!-- Questions will be inserted here by JS -->
+    </form>
+    <button id="submitBtn" onclick="submitQuiz()">Submit Answers</button>
+    <div id="score"></div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        q: "What is the binary equivalent of the decimal number 25?",
+        options: ["11001", "10101", "11100", "10011"],
+        answer: 0
+      },
+      {
+        q: "Convert the binary number 1010 to decimal:",
+        options: ["8", "9", "10", "11"],
+        answer: 2
+      },
+      {
+        q: "What is the result of binary addition: 1011 + 1101?",
+        options: ["11000", "10100", "11110", "10010"],
+        answer: 2
+      },
+      {
+        q: "Which of the following is the binary equivalent of the hexadecimal number ‘A’?",
+        options: ["1001", "1010", "1011", "1111"],
+        answer: 1
+      },
+      {
+        q: "What is the binary equivalent of the decimal number 100?",
+        options: ["1100100", "1000101", "1010010", "1110001"],
+        answer: 0
+      },
+      {
+        q: "Convert binary 1111 to decimal:",
+        options: ["14", "15", "16", "13"],
+        answer: 1
+      },
+      {
+        q: "What is 1101 in hexadecimal?",
+        options: ["B", "C", "D", "E"],
+        answer: 2
+      },
+      {
+        q: "Binary subtraction of 1010 - 0011 is:",
+        options: ["0101", "0111", "1001", "0011"],
+        answer: 1
+      },
+      {
+        q: "Which binary number is equal to octal 7?",
+        options: ["100", "110", "111", "101"],
+        answer: 2
+      },
+      {
+        q: "What is the decimal equivalent of binary 100000?",
+        options: ["16", "32", "64", "48"],
+        answer: 1
+      },
+      {
+        q: "What is the binary form of the decimal number 7?",
+        options: ["111", "101", "110", "100"],
+        answer: 0
+      },
+      {
+        q: "The binary number 100110 is equal to which decimal?",
+        options: ["38", "39", "36", "40"],
+        answer: 0
+      },
+      {
+        q: "Which of the following is a valid binary number?",
+        options: ["1201", "1010", "2301", "5678"],
+        answer: 1
+      },
+      {
+        q: "Binary addition of 1100 + 0011 is:",
+        options: ["1111", "10001", "1101", "1011"],
+        answer: 0
+      },
+      {
+        q: "What is the hexadecimal equivalent of binary 1111?",
+        options: ["C", "D", "E", "F"],
+        answer: 3
+      },
+      {
+        q: "Convert decimal 8 to binary:",
+        options: ["1000", "0100", "1100", "1110"],
+        answer: 0
+      },
+      {
+        q: "Which of the following is not a binary digit?",
+        options: ["1", "0", "2", "None of the above"],
+        answer: 2
+      },
+      {
+        q: "The binary number 101101 is equivalent to which decimal?",
+        options: ["45", "46", "43", "41"],
+        answer: 0
+      },
+      {
+        q: "Convert binary 100011 to decimal:",
+        options: ["35", "37", "39", "34"],
+        answer: 1
+      },
+      {
+        q: "Which octal number is equal to binary 110011?",
+        options: ["63", "61", "67", "53"],
+        answer: 3
+      }
+    ];
+
+    const form = document.getElementById("quizForm");
+
+    questions.forEach((question, index) => {
+      const qDiv = document.createElement("div");
+      qDiv.classList.add("question");
+      qDiv.innerHTML = `<p><strong>Q${index + 1}:</strong> ${question.q}</p>`;
+
+      const optionsDiv = document.createElement("div");
+      optionsDiv.classList.add("options");
+
+      question.options.forEach((option, i) => {
+        const optionId = `q${index}_opt${i}`;
+        optionsDiv.innerHTML += `
+          <label>
+            <input type="radio" name="q${index}" value="${i}" id="${optionId}"> ${option}
+          </label>`;
+      });
+
+      qDiv.appendChild(optionsDiv);
+      form.appendChild(qDiv);
+    });
+
+    function submitQuiz() {
+      let score = 0;
+      for (let i = 0; i < questions.length; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (!selected) {
+          alert(`Please answer question ${i + 1}`);
+          return;
+        }
+        if (parseInt(selected.value) === questions[i].answer) {
+          score++;
+        }
+      }
+      document.getElementById("score").innerText = `You scored ${score} out of ${questions.length}`;
+    }
+  </script>
+</body>
+</html>
