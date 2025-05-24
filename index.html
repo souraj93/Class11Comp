@@ -187,11 +187,17 @@
         }
 
         document.getElementById("score").innerText = `You scored ${score} out of ${questions.length}`;
+
+        const userName = document.getElementById("username").value;
+        if (!userName) {
+            alert("Please enter your name before submitting.");
+            return;
+        }
         const formData = new FormData();
         formData.append("data", JSON.stringify({
-        username: "John",
-        score: 19,
-        total: 20,
+        username: userName,
+        score: score,
+        total: questions.length,
         time: new Date().toLocaleString()
         }));
 
