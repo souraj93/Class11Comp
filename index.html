@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Binary Conversion MCQ Quiz</title>
+  <title>Class 11 Computer MCQ Quiz</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -53,10 +53,14 @@
 </head>
 <body>
   <div class="quiz-container">
-    <h2>Binary Conversion MCQ Quiz</h2>
+    <h2>MCQ Quiz</h2>
     <form id="quizForm">
       <!-- Questions will be inserted here by JS -->
     </form>
+    <div>
+    <label for="username"><strong>Enter your name:</strong></label>
+    <input type="text" id="username" placeholder="Your name here" required>
+    </div>
     <button id="submitBtn" onclick="submitQuiz()">Submit Answers</button>
     <div id="score"></div>
   </div>
@@ -64,85 +68,66 @@
   <script>
     const questions = [
       { q: "What is the binary equivalent of the decimal number 25?", options: ["11001", "10101", "11100", "10011"], answer: 0 },
-      { q: "Convert the binary number 1010 to decimal:", options: ["8", "9", "10", "11"], answer: 2 },
-      { q: "What is the result of binary addition: 1011 + 1101?", options: ["11000", "10100", "11110", "10010"], answer: 2 },
-      { q: "Which of the following is the binary equivalent of the hexadecimal number ‘A’?", options: ["1001", "1010", "1011", "1111"], answer: 1 },
-      { q: "What is the binary equivalent of the decimal number 100?", options: ["1100100", "1000101", "1010010", "1110001"], answer: 0 },
-      { q: "Convert binary 1111 to decimal:", options: ["14", "15", "16", "13"], answer: 1 },
-      { q: "What is 1101 in hexadecimal?", options: ["B", "C", "D", "E"], answer: 2 },
-      { q: "Binary subtraction of 1010 - 0011 is:", options: ["0101", "0111", "1001", "0011"], answer: 1 },
-      { q: "Which binary number is equal to octal 7?", options: ["100", "110", "111", "101"], answer: 2 },
-      { q: "What is the decimal equivalent of binary 100000?", options: ["16", "32", "64", "48"], answer: 1 },
-      { q: "What is the binary form of the decimal number 7?", options: ["111", "101", "110", "100"], answer: 0 },
-      { q: "The binary number 100110 is equal to which decimal?", options: ["38", "39", "36", "40"], answer: 0 },
-      { q: "Which of the following is a valid binary number?", options: ["1201", "1010", "2301", "5678"], answer: 1 },
-      { q: "Binary addition of 1100 + 0011 is:", options: ["1111", "10001", "1101", "1011"], answer: 0 },
-      { q: "What is the hexadecimal equivalent of binary 1111?", options: ["C", "D", "E", "F"], answer: 3 },
-      { q: "Convert decimal 8 to binary:", options: ["1000", "0100", "1100", "1110"], answer: 0 },
-      { q: "Which of the following is not a binary digit?", options: ["1", "0", "2", "None of the above"], answer: 2 },
-      { q: "The binary number 101101 is equivalent to which decimal?", options: ["45", "46", "43", "41"], answer: 0 },
-      { q: "Convert binary 100011 to decimal:", options: ["35", "37", "39", "34"], answer: 1 },
-      { q: "Which octal number is equal to binary 110011?", options: ["63", "61", "67", "53"], answer: 3 },
-      { q: "What is the decimal equivalent of binary 11010?", options: ["24", "26", "28", "30"], answer: 1 },
-      { q: "Which binary number is equal to decimal 45?", options: ["101101", "111001", "110001", "101011"], answer: 0 },
-      { q: "What is the result of binary addition: 1110 + 0101?", options: ["10100", "10011", "11011", "11111"], answer: 1 },
-      { q: "Convert binary 10010 to decimal:", options: ["16", "18", "20", "22"], answer: 3 },
-      { q: "What is the binary equivalent of the decimal number 60?", options: ["111100", "110110", "111000", "111110"], answer: 0 },
-      { q: "Which binary number represents the hexadecimal number ‘F’?", options: ["1111", "1100", "1000", "1010"], answer: 0 },
-      { q: "Binary subtraction: 1000 - 0010 = ?", options: ["0010", "0100", "0110", "1010"], answer: 2 },
-      { q: "Which of the following is NOT a valid binary number?", options: ["1010", "1001", "1112", "1100"], answer: 2 },
-      { q: "Convert decimal 31 to binary:", options: ["11101", "11110", "11111", "10000"], answer: 2 },
-      { q: "The binary number 101010 is equal to which decimal?", options: ["40", "42", "44", "46"], answer: 1 },
-      { q: "What is the hexadecimal equivalent of binary 1010?", options: ["9", "A", "B", "C"], answer: 1 },
-      { q: "Which octal number is equal to binary 100101?", options: ["45", "41", "44", "52"], answer: 0 },
-      { q: "Binary addition of 1010 + 0110 gives:", options: ["1110", "1100", "1000", "1011"], answer: 0 },
-      { q: "What is the binary equivalent of the decimal number 14?", options: ["1101", "1110", "1001", "1010"], answer: 1 },
-      { q: "Convert binary 10000 to decimal:", options: ["16", "18", "20", "22"], answer: 0 },
-      { q: "Which binary number is equal to octal 12?", options: ["1010", "10010", "10110", "11010"], answer: 2 },
-      { q: "What is the result of binary subtraction: 1111 - 0111?", options: ["1000", "1010", "0100", "1110"], answer: 0 },
-      { q: "The binary number 111100 is equal to which decimal?", options: ["60", "62", "64", "58"], answer: 0 },
-      { q: "Which of these is a correct binary representation of decimal 3?", options: ["10", "11", "100", "101"], answer: 1 },
-      { q: "Convert decimal 12 to binary:", options: ["1010", "1100", "1000", "1110"], answer: 1 },
-      { q: "What is the binary representation of decimal 17?", options: ["10001", "10010", "11000", "11100"], answer: 0 },
-{ q: "Which binary number equals decimal 99?", options: ["1100011", "1001111", "1010011", "1100100"], answer: 0 },
-{ q: "Binary 11101 is equal to decimal:", options: ["29", "31", "30", "27"], answer: 3 },
-{ q: "What is the result of 1001 + 0110 in binary?", options: ["1111", "10000", "10101", "11000"], answer: 1 },
-{ q: "Which binary number equals decimal 255?", options: ["11111111", "10101010", "11111011", "11110000"], answer: 0 },
-{ q: "Convert 101100 to decimal:", options: ["44", "46", "48", "42"], answer: 0 },
-{ q: "Which of these is not a valid 8-bit binary number?", options: ["11011010", "10101011", "11100001", "10021001"], answer: 3 },
-{ q: "What is the binary of decimal 200?", options: ["11001000", "11000100", "11101000", "10001000"], answer: 0 },
-{ q: "Convert binary 11001 to decimal:", options: ["25", "27", "29", "31"], answer: 0 },
-{ q: "Binary addition of 1000 + 1000 = ?", options: ["10000", "11000", "1000", "1111"], answer: 0 },
-{ q: "Which binary number represents octal 10?", options: ["1000", "1010", "10000", "1100"], answer: 2 },
-{ q: "Binary subtraction of 1110 - 1011 =", options: ["0011", "0101", "0111", "0010"], answer: 0 },
-{ q: "Which binary number is equal to hexadecimal B?", options: ["1010", "1011", "1110", "1001"], answer: 1 },
-{ q: "Decimal 11 in binary is:", options: ["1011", "1101", "1001", "1111"], answer: 0 },
-{ q: "Which binary number equals decimal 64?", options: ["1000000", "1000010", "1100000", "1010000"], answer: 0 },
-{ q: "Binary 100111 is equal to which decimal?", options: ["39", "41", "37", "35"], answer: 2 },
-{ q: "What is the binary of decimal 70?", options: ["1001000", "1000110", "1000100", "1010000"], answer: 1 },
-{ q: "Binary 1010101 equals:", options: ["85", "75", "95", "65"], answer: 0 },
-{ q: "Binary 10010 + 01101 equals:", options: ["10101", "11000", "11111", "10000"], answer: 2 },
-{ q: "Which of the following is binary for decimal 20?", options: ["10100", "10010", "10000", "11000"], answer: 0 },
-      { q: "What is the binary equivalent of the decimal number 90?", options: ["1011010", "1100100", "1010110", "1110010"], answer: 0 },
-{ q: "Convert binary 110000 to decimal:", options: ["48", "50", "60", "64"], answer: 0 },
-{ q: "Binary 10101 is equal to:", options: ["19", "21", "23", "25"], answer: 1 },
-{ q: "Which of the following represents decimal 75 in binary?", options: ["1001011", "1001101", "1001010", "1001011"], answer: 0 },
-{ q: "What is the binary equivalent of 150?", options: ["10010110", "10101010", "10010010", "10011010"], answer: 0 },
-{ q: "Binary 111111 is equal to which decimal?", options: ["63", "62", "61", "60"], answer: 0 },
-{ q: "What is the result of binary subtraction: 1100 - 0110?", options: ["0110", "1000", "0100", "0010"], answer: 2 },
-{ q: "Which binary number equals decimal 5?", options: ["100", "101", "110", "111"], answer: 1 },
-{ q: "Decimal 18 in binary is:", options: ["10010", "10000", "10001", "10011"], answer: 0 },
-{ q: "What is the binary of decimal 200?", options: ["11001000", "11000100", "11010000", "11001100"], answer: 0 },
-{ q: "Binary 1101010 equals decimal:", options: ["106", "108", "110", "114"], answer: 0 },
-{ q: "Convert binary 101011 to decimal:", options: ["42", "43", "44", "45"], answer: 3 },
-{ q: "What is the binary equivalent of decimal 33?", options: ["100001", "100011", "100100", "100101"], answer: 0 },
-{ q: "Binary 100000 equals decimal:", options: ["30", "32", "34", "36"], answer: 1 },
-{ q: "Which binary number represents octal 5?", options: ["101", "110", "111", "100"], answer: 0 },
-{ q: "Binary addition of 1011 + 0100 gives:", options: ["1111", "10111", "10000", "10011"], answer: 3 },
-{ q: "Decimal 27 in binary is:", options: ["11011", "11001", "11100", "11101"], answer: 0 },
-{ q: "Which of these is the binary of decimal 22?", options: ["10100", "10110", "10101", "10010"], answer: 1 },
-{ q: "Binary 1001110 is equal to which decimal?", options: ["78", "76", "79", "75"], answer: 0 },
-{ q: "What is the binary form of the decimal number 13?", options: ["1100", "1101", "1110", "1111"], answer: 1 }
+    //   { q: "Convert the binary number 1010 to decimal:", options: ["8", "9", "10", "11"], answer: 2 },
+    //   { q: "What is the result of binary addition: 1011 + 1101?", options: ["11000", "10100", "11110", "10010"], answer: 2 },
+    //   { q: "Which of the following is the binary equivalent of the hexadecimal number ‘A’?", options: ["1001", "1010", "1011", "1111"], answer: 1 },
+    //   { q: "What is the binary equivalent of the decimal number 100?", options: ["1100100", "1000101", "1010010", "1110001"], answer: 0 },
+    //   { q: "Convert binary 1111 to decimal:", options: ["14", "15", "16", "13"], answer: 1 },
+    //   { q: "What is 1101 in hexadecimal?", options: ["B", "C", "D", "E"], answer: 2 },
+    //   { q: "Binary subtraction of 1010 - 0011 is:", options: ["0101", "0111", "1001", "0011"], answer: 1 },
+    //   { q: "Which binary number is equal to octal 7?", options: ["100", "110", "111", "101"], answer: 2 },
+    //   { q: "What is the decimal equivalent of binary 100000?", options: ["16", "32", "64", "48"], answer: 1 },
+    //   { q: "What is the binary form of the decimal number 7?", options: ["111", "101", "110", "100"], answer: 0 },
+    //   { q: "The binary number 100110 is equal to which decimal?", options: ["38", "39", "36", "40"], answer: 0 },
+    //   { q: "Which of the following is a valid binary number?", options: ["1201", "1010", "2301", "5678"], answer: 1 },
+    //   { q: "Binary addition of 1100 + 0011 is:", options: ["1111", "10001", "1101", "1011"], answer: 0 },
+    //   { q: "What is the hexadecimal equivalent of binary 1111?", options: ["C", "D", "E", "F"], answer: 3 },
+    //   { q: "Convert decimal 8 to binary:", options: ["1000", "0100", "1100", "1110"], answer: 0 },
+    //   { q: "Which of the following is not a binary digit?", options: ["1", "0", "2", "None of the above"], answer: 2 },
+    //   { q: "The binary number 101101 is equivalent to which decimal?", options: ["45", "46", "43", "41"], answer: 0 },
+    //   { q: "Convert binary 100011 to decimal:", options: ["35", "37", "39", "34"], answer: 1 },
+    //   { q: "Which octal number is equal to binary 110011?", options: ["63", "61", "67", "53"], answer: 3 },
+    //   { q: "What is the decimal equivalent of binary 11010?", options: ["24", "26", "28", "30"], answer: 1 },
+    //   { q: "Which binary number is equal to decimal 45?", options: ["101101", "111001", "110001", "101011"], answer: 0 },
+    //   { q: "What is the result of binary addition: 1110 + 0101?", options: ["10100", "10011", "11011", "11111"], answer: 1 },
+    //   { q: "Convert binary 10010 to decimal:", options: ["16", "18", "20", "22"], answer: 3 },
+    //   { q: "What is the binary equivalent of the decimal number 60?", options: ["111100", "110110", "111000", "111110"], answer: 0 },
+    //   { q: "Which binary number represents the hexadecimal number ‘F’?", options: ["1111", "1100", "1000", "1010"], answer: 0 },
+    //   { q: "Binary subtraction: 1000 - 0010 = ?", options: ["0010", "0100", "0110", "1010"], answer: 2 },
+    //   { q: "Which of the following is NOT a valid binary number?", options: ["1010", "1001", "1112", "1100"], answer: 2 },
+    //   { q: "Convert decimal 31 to binary:", options: ["11101", "11110", "11111", "10000"], answer: 2 },
+    //   { q: "The binary number 101010 is equal to which decimal?", options: ["40", "42", "44", "46"], answer: 1 },
+    //   { q: "What is the hexadecimal equivalent of binary 1010?", options: ["9", "A", "B", "C"], answer: 1 },
+    //   { q: "Which octal number is equal to binary 100101?", options: ["45", "41", "44", "52"], answer: 0 },
+    //   { q: "Binary addition of 1010 + 0110 gives:", options: ["1110", "1100", "1000", "1011"], answer: 0 },
+    //   { q: "What is the binary equivalent of the decimal number 14?", options: ["1101", "1110", "1001", "1010"], answer: 1 },
+    //   { q: "Convert binary 10000 to decimal:", options: ["16", "18", "20", "22"], answer: 0 },
+    //   { q: "Which binary number is equal to octal 12?", options: ["1010", "10010", "10110", "11010"], answer: 2 },
+    //   { q: "What is the result of binary subtraction: 1111 - 0111?", options: ["1000", "1010", "0100", "1110"], answer: 0 },
+    //   { q: "The binary number 111100 is equal to which decimal?", options: ["60", "62", "64", "58"], answer: 0 },
+    //   { q: "Which of these is a correct binary representation of decimal 3?", options: ["10", "11", "100", "101"], answer: 1 },
+    //   { q: "Convert decimal 12 to binary:", options: ["1010", "1100", "1000", "1110"], answer: 1 },
+    //   { q: "What is the binary representation of decimal 17?", options: ["10001", "10010", "11000", "11100"], answer: 0 },
+    //   { q: "What is the octal equivalent of decimal 64?", options: ["100", "80", "74", "1000"], answer: 0 },
+    //     { q: "Convert decimal 35 to octal:", options: ["41", "42", "43", "44"], answer: 0 },
+    //     { q: "What is decimal of octal 25?", options: ["21", "20", "18", "17"], answer: 0 },
+    //     { q: "Octal 77 equals decimal:", options: ["63", "64", "61", "65"], answer: 0 },
+    //     { q: "Decimal 100 is what in octal?", options: ["144", "100", "110", "124"], answer: 0 },
+    //     { q: "Decimal 15 in hexadecimal is:", options: ["F", "E", "D", "C"], answer: 0 },
+    //     { q: "Convert decimal 26 to hexadecimal:", options: ["1A", "1B", "1C", "1D"], answer: 0 },
+    //     { q: "Hexadecimal '2F' equals decimal:", options: ["47", "46", "45", "48"], answer: 0 },
+    //     { q: "What is the decimal of hexadecimal '1C'?", options: ["28", "26", "24", "30"], answer: 0 },
+    //     { q: "Convert decimal 255 to hexadecimal:", options: ["FF", "EF", "FE", "DF"], answer: 0 },
+    //     { q: "What is the octal equivalent of decimal 8?", options: ["10", "11", "12", "8"], answer: 0 },
+    //     { q: "Decimal 17 in octal is:", options: ["21", "20", "22", "23"], answer: 0 },
+    //     { q: "What is the hexadecimal of decimal 11?", options: ["B", "A", "C", "D"], answer: 0 },
+    //     { q: "Hexadecimal '3E' is equal to decimal:", options: ["62", "60", "64", "61"], answer: 0 },
+    //     { q: "Convert octal 12 to decimal:", options: ["10", "12", "8", "14"], answer: 0 },
+    //     { q: "What is the decimal value of octal 100?", options: ["64", "80", "100", "72"], answer: 0 },
+    //     { q: "Hexadecimal '7B' equals decimal:", options: ["123", "121", "124", "125"], answer: 0 },
+    //     { q: "What is decimal equivalent of hexadecimal '9F'?", options: ["159", "155", "160", "161"], answer: 0 },
+    //     { q: "Convert decimal 31 to hexadecimal:", options: ["1F", "1E", "2F", "2E"], answer: 0 },
+    //     { q: "Convert hexadecimal '10' to decimal:", options: ["16", "10", "18", "12"], answer: 0 }
 
 
     ];
@@ -170,19 +155,60 @@
     });
 
     function submitQuiz() {
-      let score = 0;
-      for (let i = 0; i < questions.length; i++) {
-        const selected = document.querySelector(`input[name="q${i}"]:checked`);
-        if (!selected) {
-          alert(`Please answer question ${i + 1}`);
-          return;
+        let score = 0;
+        for (let i = 0; i < questions.length; i++) {
+            const selected = document.querySelector(`input[name="q${i}"]:checked`);
+            const questionDiv = document.querySelectorAll(".question")[i];
+
+            // Remove any existing feedback (if resubmitting)
+            const existingFeedback = questionDiv.querySelector(".feedback");
+            if (existingFeedback) existingFeedback.remove();
+
+            // Create feedback div
+            const feedback = document.createElement("div");
+            feedback.className = "feedback";
+            feedback.style.marginTop = "10px";
+
+            // Check answer
+            if (!selected) {
+            feedback.innerHTML = `<span style="color: red;">You did not answer this question.</span><br><strong>Correct answer:</strong> ${questions[i].options[questions[i].answer]}`;
+            questionDiv.appendChild(feedback);
+            continue;
+            }
+
+            if (parseInt(selected.value) === questions[i].answer) {
+            score++;
+            feedback.innerHTML = `<span style="color: green;">Correct!</span>`;
+            } else {
+            feedback.innerHTML = `<span style="color: red;">Incorrect.</span><br><strong>Correct answer:</strong> ${questions[i].options[questions[i].answer]}`;
+            }
+
+            questionDiv.appendChild(feedback);
         }
-        if (parseInt(selected.value) === questions[i].answer) {
-          score++;
-        }
-      }
-      document.getElementById("score").innerText = `You scored ${score} out of ${questions.length}`;
+
+        document.getElementById("score").innerText = `You scored ${score} out of ${questions.length}`;
+        const postData = {
+        username: username,
+        score: score,
+        total: questions.length,
+        time: new Date().toLocaleString()
+        };
+
+        fetch("https://script.google.com/macros/s/AKfycbxXRodEm6Q78JJXYHewYusFTDX3m23ncg1_gNvDaMfbnQY69CcV1b3ru8ZlObz-hbmj/exec", {
+        method: "POST",
+        body: JSON.stringify(postData),
+        headers: { "Content-Type": "application/json" }
+        })
+        .then(res => res.json())
+        .then(data => {
+        console.log("Submission successful:", data);
+        })
+        .catch(err => {
+        console.error("Error submitting to Google Sheet:", err);
+        });
+        document.getElementById("submitBtn").disabled = true; // Prevent resubmission
     }
+
   </script>
 </body>
 </html>
