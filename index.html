@@ -187,25 +187,21 @@
         }
 
         document.getElementById("score").innerText = `You scored ${score} out of ${questions.length}`;
-        const postData = {
-        username: username,
-        score: score,
-        total: questions.length,
-        time: new Date().toLocaleString()
-        };
+        const formData = new FormData();
+        formData.append("data", JSON.stringify({
+        username: "John",
+        score: 19,
+        total: 20,
+        timestamp: new Date().toLocaleString()
+        }));
 
-        fetch("https://script.google.com/macros/s/AKfycbxXRodEm6Q78JJXYHewYusFTDX3m23ncg1_gNvDaMfbnQY69CcV1b3ru8ZlObz-hbmj/exec", {
+        fetch("https://script.google.com/macros/s/AKfycbzuAPEyXz1M8Gr7HPUMrbDxVqlkzyrNo3byhidmaPdmtJa4PovZ8HJjqszC5AoJiQYL/exec", {
         method: "POST",
-        body: JSON.stringify(postData),
-        headers: { "Content-Type": "application/json" }
+        body: formData
         })
         .then(res => res.json())
-        .then(data => {
-        console.log("Submission successful:", data);
-        })
-        .catch(err => {
-        console.error("Error submitting to Google Sheet:", err);
-        });
+        .then(data => console.log("Submitted successfully", data))
+        .catch(err => console.error("Error submitting:", err));
         document.getElementById("submitBtn").disabled = true; // Prevent resubmission
     }
 
