@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Class 11 Chemistry MCQ Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      padding: 20px;
+    }
+
+    .quiz-container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    .question {
+      margin-bottom: 15px;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .options label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+    #submitBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #submitBtn:hover {
+      background: #0056b3;
+    }
+
+    #score {
+      margin-top: 20px;
+      font-size: 20px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="quiz-container">
+    <h2>MCQ Quiz</h2>
+    <form id="quizForm">
+      <!-- Questions will be inserted here by JS -->
+    </form>
+    <div>
+      <label for="username"><strong>Enter your name:</strong></label>
+      <input type="text" id="username" placeholder="Your name here" required>
+    </div>
+    <button id="submitBtn" onclick="submitQuiz()">Submit Answers</button>
+    <div id="score"></div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        "q": "বোরের পরমাণু মডেল প্রধানত কোন পরমাণুর জন্য প্রযোজ্য?",
+        "options": ["সকল পরমাণুর", "বহু-ইলেকট্রন পরমাণুর", "হাইড্রোজেন সদৃশ পরমাণুর", "যৌগের"],
+        "answer": 2
+      },
+      {
+        "q": "বোরের মডেল অনুযায়ী ইলেকট্রন পরমাণুর চারপাশে ঘোরে:",
+        "options": ["এলোমেলো পথে", "বৃত্তাকার নির্দিষ্ট কক্ষপথে", "উপবৃত্তাকার পথে", "সোজা রেখায়"],
+        "answer": 1
+      },
+      {
+        "q": "বোরের মতে ইলেকট্রনের কৌণিক ভরবেগ:",
+        "options": ["সবসময় পরিবর্তনশীল", "শূন্য", "অসীম", "নিধারিত মানে কোয়ান্টাইজড"],
+        "answer": 3
+      },
+      {
+        "q": "কোন ধ্রুবকটি বোরের মডেলে কৌণিক ভরবেগের কোয়ান্টাইজেশনে ব্যবহৃত হয়?",
+        "options": ["প্লাঙ্ক ধ্রুবক (h)", "আলোর বেগ (c)", "বোল্টসম্যান ধ্রুবক (k)", "গ্যাস ধ্রুবক (R)"],
+        "answer": 0
+      },
+      {
+        "q": "বোরের মডেলে কৌণিক ভরবেগের সূত্র কোনটি?",
+        "options": ["mvr = nh", "mvr = h", "mvr = nh/2π", "mvr = 2πnh"],
+        "answer": 2
+      },
+      {
+        "q": "বোরের মডেল ব্যাখ্যা করে:",
+        "options": ["জটিল পরমাণুর বর্ণালী", "হাইড্রোজেনের রেখা বর্ণালী", "যৌগ গঠন", "পারমাণবিক ভর"],
+        "answer": 1
+      },
+      {
+        "q": "বোরের মতে, ইলেকট্রন শক্তি গ্রহণ করলে:",
+        "options": ["নিম্ন কক্ষপথে যায়", "নিউট্রনে রূপান্তরিত হয়", "উচ্চ কক্ষপথে যায়", "আকার পরিবর্তন করে"],
+        "answer": 2
+      },
+      {
+        "q": "ইলেকট্রন একটি উচ্চতর কক্ষপথ থেকে নিম্নতর কক্ষপথে গেলে নির্গত হয়:",
+        "options": ["শব্দ", "তরঙ্গ", "আলোক", "তাপ"],
+        "answer": 2
+      },
+      {
+        "q": "বোরের মডেল কতটি পোস্টুলেটের উপর ভিত্তি করে গঠিত?",
+        "options": ["১", "২", "৩", "৪"],
+        "answer": 1
+      },
+      {
+        "q": "নিম্নের কোনটি বোরের মডেলের সীমাবদ্ধতা?",
+        "options": ["এটি হাইড্রোজেনের রেখাবর্ণালী ব্যাখ্যা করে", "এটি নির্ভুলভাবে পরমাণুর ভর গণনা করে", "এটি বহু-ইলেকট্রন পরমাণু ব্যাখ্যা করতে পারে না", "এটি ইলেকট্রনের স্পিন ব্যাখ্যা করে"],
+        "answer": 2
+      },
+      {
+        "q": "বোরের মডেল কোন ধরণের কক্ষপথের কথা বলে?",
+        "options": ["বৃত্তাকার", "উপবৃত্তাকার", "রৈখিক", "অসীম"],
+        "answer": 0
+      },
+      {
+        "q": "কোনটি বোরের মডেলের একটি মূল ধারণা নয়?",
+        "options": ["ইলেকট্রন নির্দিষ্ট শক্তি স্তরে থাকে", "ইলেকট্রন এলোমেলোভাবে চলে", "ইলেকট্রনের শক্তি কোয়ান্টাইজড", "ইলেকট্রন শক্তি শোষণ বা নিঃসরণ করতে পারে"],
+        "answer": 1
+      },
+      {
+        "q": "বোর মডেল অনুযায়ী, যে কক্ষপথে ইলেকট্রন শক্তি নিঃসরণ করে তা হল:",
+        "options": ["উত্তেজিত অবস্থা", "ভৌতিক অবস্থা", "ভূমিকা অবস্থা", "ভূমি অবস্থা"],
+        "answer": 3
+      },
+      {
+        "q": "বোর মডেল ব্যাখ্যা করতে পারে না:",
+        "options": ["জেপসন প্রভাব", "স্পেকট্রা বিভাজন", "স্পিন", "উপরে সবগুলো"],
+        "answer": 3
+      },
+      {
+        "q": "স্পেকট্রাল লাইন বিভাজন ব্যাখ্যা করতে ব্যর্থ হয়:",
+        "options": ["থমসনের মডেল", "রাদারফোর্ড মডেল", "বোর মডেল", "কোয়ান্টাম মডেল"],
+        "answer": 2
+      },
+      {
+        "q": "বোর মডেল কোন বিজ্ঞানীর গবেষণার উপর ভিত্তি করে গঠিত?",
+        "options": ["ডাল্টন", "থমসন", "রাদারফোর্ড", "আলবার্ট আইনস্টাইন"],
+        "answer": 2
+      },
+      {
+        "q": "ইলেকট্রন যদি স্থিত অবস্থায় থাকে তবে তা:",
+        "options": ["শক্তি শোষণ করে", "শক্তি নিঃসরণ করে", "শক্তি পরিবর্তন করে না", "কণায় রূপান্তরিত হয়"],
+        "answer": 2
+      },
+      {
+        "q": "বোরের মডেল অনুসারে, কক্ষপথের শক্তি স্তরের সংখ্যা নির্ধারণ করে:",
+        "options": ["ইলেকট্রনের সংখ্যা", "নিউট্রনের সংখ্যা", "কোয়ান্টাম সংখ্যা (n)", "স্পিন"],
+        "answer": 2
+      },
+      {
+        "q": "বোরের মডেল ইলেকট্রনের গতি ব্যাখ্যা করে:",
+        "options": ["তরঙ্গ রূপে", "কণার রূপে", "তরঙ্গ-কণা দ্বৈত রূপে", "কোনোটিই নয়"],
+        "answer": 1
+      },
+      {
+        "q": "বোর মডেল যে ক্ষেত্রে সঠিক ভবিষ্যদ্বাণী করতে পারে না:",
+        "options": ["হাইড্রোজেন পরমাণু", "হিলিয়াম পরমাণু", "লিথিয়াম আয়ন", "সবগুলো"],
+        "answer": 1
+      },
+      {
+        "q": "একটি পরমাণুর ইলেকট্রনগুলি প্রধানত কোন স্তরে বিভক্ত থাকে?",
+        "options": ["অণু", "শেল", "আয়ন", "পরমাণু"],
+        "answer": 1
+      },
+      {
+        "q": "শেলগুলিকে সাধারণত কী দ্বারা নির্দেশ করা হয়?",
+        "options": ["সংখ্যা", "অক্ষর (K, L, M...)", "প্রতীক", "রঙ"],
+        "answer": 1
+      },
+      {
+        "q": "প্রথম শেল (K শেল) এর প্রধান কোয়ান্টাম সংখ্যা কত?",
+        "options": ["0", "1", "2", "3"],
+        "answer": 1
+      },
+      {
+        "q": "নিম্নের কোনটি একটি সাবশেল নয়?",
+        "options": ["s", "p", "q", "d"],
+        "answer": 2
+      },
+      {
+        "q": "L শেলে কতটি সাবশেল থাকে?",
+        "options": ["1", "2", "3", "4"],
+        "answer": 2
+      },
+      {
+        "q": "s-subshell সর্বাধিক কতটি ইলেকট্রন ধারণ করতে পারে?",
+        "options": ["2", "4", "6", "8"],
+        "answer": 0
+      },
+      {
+        "q": "p-subshell এ সর্বোচ্চ কতটি ইলেকট্রন থাকতে পারে?",
+        "options": ["2", "4", "6", "8"],
+        "answer": 2
+      },
+      {
+        "q": "একটি d-subshell এ কতটি অরবিটাল থাকে?",
+        "options": ["2", "3", "5", "7"],
+        "answer": 2
+      },
+      {
+        "q": "s-subshell এ কয়টি অরবিটাল থাকে?",
+        "options": ["1", "2", "3", "4"],
+        "answer": 0
+      },
+      {
+        "q": "প্রধান কোয়ান্টাম সংখ্যা বৃদ্ধি পেলে, শেলের:",
+        "options": ["শক্তি কমে", "শক্তি বাড়ে", "পরিবর্তন হয় না", "শক্তি অসীম হয়"],
+        "answer": 1
+      },
+      {
+        "q": "n = 3 হলে, কতটি সাবশেল থাকবে?",
+        "options": ["1", "2", "3", "4"],
+        "answer": 2
+      },
+      {
+        "q": "d-subshell সর্বোচ্চ কতটি ইলেকট্রন ধারণ করতে পারে?",
+        "options": ["6", "10", "12", "14"],
+        "answer": 1
+      },
+      {
+        "q": "f-subshell এ সর্বাধিক কতটি ইলেকট্রন থাকতে পারে?",
+        "options": ["10", "12", "14", "16"],
+        "answer": 2
+      },
+      {
+        "q": "নিচের কোনটি কেবলমাত্র 4র্থ শেল এবং তার পরেই দেখা যায়?",
+        "options": ["s-subshell", "p-subshell", "d-subshell", "f-subshell"],
+        "answer": 3
+      },
+      {
+        "q": "p-subshell এ কয়টি অরবিটাল থাকে?",
+        "options": ["1", "2", "3", "4"],
+        "answer": 2
+      },
+      {
+        "q": "যদি n = 2 হয়, তবে সম্ভাব্য l এর মান কী কী হতে পারে?",
+        "options": ["0", "0 ও 1", "1 ও 2", "1 ও 3"],
+        "answer": 1
+      },
+      {
+        "q": "n = 1 হলে, কেবলমাত্র কোন সাবশেল বিদ্যমান থাকে?",
+        "options": ["s", "p", "d", "f"],
+        "answer": 0
+      },
+      {
+        "q": "শেল এবং সাবশেল-এর ধারণা ব্যাখ্যা করে কোন তত্ত্ব?",
+        "options": ["ডাল্টনের তত্ত্ব", "থমসনের তত্ত্ব", "বোরের মডেল", "কোয়ান্টাম যান্ত্রিক মডেল"],
+        "answer": 3
+      },
+      {
+        "q": "একটি অরবিটালে সর্বাধিক কয়টি ইলেকট্রন থাকতে পারে?",
+        "options": ["1", "2", "3", "4"],
+        "answer": 1
+      },
+      {
+        "q": "n = 4 হলে, সম্ভাব্য l এর মান কতগুলি হতে পারে?",
+        "options": ["1", "2", "3", "4"],
+        "answer": 2
+      },
+      {
+        "q": "বোরের মডেল অনুসারে, ইলেকট্রনের শক্তি স্তর নির্ধারণ করে:",
+        "options": ["কোয়ান্টাম সংখ্যা (n)", "স্পিন", "ম্যাগনেটিক কোয়ান্টাম সংখ্যা", "ইলেকট্রনের ভর"],
+        "answer": 0
+      },
+      {
+        "q": "বোরের মডেল ব্যাখ্যা করতে পারে না:",
+        "options": ["হাইড্রোজেন পরমাণুর বর্ণালী", "বহু-ইলেকট্রন পরমাণুর বর্ণালী", "স্পেকট্রাল লাইন বিভাজন", "ইলেকট্রনের স্পিন"],
+        "answer": 1
+      }
+    ]
+
+
+    const form = document.getElementById("quizForm");
+
+    questions.forEach((question, index) => {
+      const qDiv = document.createElement("div");
+      qDiv.classList.add("question");
+      qDiv.innerHTML = `<p><strong>Q${index + 1}:</strong> ${question.q}</p>`;
+
+      const optionsDiv = document.createElement("div");
+      optionsDiv.classList.add("options");
+
+      question.options.forEach((option, i) => {
+        const optionId = `q${index}_opt${i}`;
+        optionsDiv.innerHTML += `
+          <label>
+            <input type="radio" name="q${index}" value="${i}" id="${optionId}"> ${option}
+          </label>`;
+      });
+
+      qDiv.appendChild(optionsDiv);
+      form.appendChild(qDiv);
+    });
+
+    function submitQuiz() {
+      let score = 0;
+      for (let i = 0; i < questions.length; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        const questionDiv = document.querySelectorAll(".question")[i];
+
+        // Remove any existing feedback (if resubmitting)
+        const existingFeedback = questionDiv.querySelector(".feedback");
+        if (existingFeedback) existingFeedback.remove();
+
+        // Create feedback div
+        const feedback = document.createElement("div");
+        feedback.className = "feedback";
+        feedback.style.marginTop = "10px";
+
+        // Check answer
+        if (!selected) {
+          feedback.innerHTML = `<span style="color: red;">You did not answer this question.</span><br><strong>Correct answer:</strong> ${questions[i].options[questions[i].answer]}`;
+          questionDiv.appendChild(feedback);
+          continue;
+        }
+
+        if (parseInt(selected.value) === questions[i].answer) {
+          score++;
+          feedback.innerHTML = `<span style="color: green;">Correct!</span>`;
+        } else {
+          feedback.innerHTML = `<span style="color: red;">Incorrect.</span><br><strong>Correct answer:</strong> ${questions[i].options[questions[i].answer]}`;
+        }
+
+        questionDiv.appendChild(feedback);
+      }
+
+      document.getElementById("score").innerText = `You scored ${score} out of ${questions.length}`;
+
+      const userName = document.getElementById("username").value;
+      if (!userName) {
+        alert("Please enter your name before submitting.");
+        return;
+      }
+      const formData = new FormData();
+      formData.append("data", JSON.stringify({
+        username: userName,
+        score: score,
+        total: questions.length,
+        time: new Date().toLocaleString()
+      }));
+
+      fetch("https://script.google.com/macros/s/AKfycbxdA2vKXjAoSnZCFeZ0kAoMxqkKC8wd9Qqu7NkakDfhKA1gqs5br6YgvNwl-ZE5A9lr/exec", {
+        method: "POST",
+        body: formData
+      })
+        .then(res => res.json())
+        .then(data => console.log("Submitted successfully", data))
+        .catch(err => console.error("Error submitting:", err));
+      document.getElementById("submitBtn").disabled = true; // Prevent resubmission
+    }
+
+  </script>
+</body>
+
+</html>
