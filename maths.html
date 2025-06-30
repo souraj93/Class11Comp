@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Class 11 physics MCQ Quiz</title>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      background: #f0f4f8;
+
+      padding: 20px;
+
+    }
+
+
+
+    .quiz-container {
+
+      max-width: 800px;
+
+      margin: auto;
+
+      background: #fff;
+
+      padding: 20px;
+
+      border-radius: 10px;
+
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    }
+
+
+
+    h2 {
+
+      color: #333;
+
+    }
+
+
+
+    .question {
+
+      margin-bottom: 15px;
+
+      padding: 10px;
+
+      border-bottom: 1px solid #ddd;
+
+    }
+
+
+
+    .options label {
+
+      display: block;
+
+      margin: 5px 0;
+
+      cursor: pointer;
+
+    }
+
+
+
+    #submitBtn {
+
+      margin-top: 20px;
+
+      padding: 10px 20px;
+
+      font-size: 16px;
+
+      background: #007bff;
+
+      color: white;
+
+      border: none;
+
+      border-radius: 5px;
+
+      cursor: pointer;
+
+    }
+
+
+
+    #submitBtn:hover {
+
+      background: #0056b3;
+
+    }
+
+
+
+    #score {
+
+      margin-top: 20px;
+
+      font-size: 20px;
+
+      color: green;
+
+      font-weight: bold;
+
+    }
+
+  </style>
+
+</head>
+
+
+
+<body>
+
+  <div class="quiz-container">
+
+    <h2>MCQ Quiz</h2>
+
+    <form id="quizForm">
+
+      <!-- Questions will be inserted here by JS -->
+
+    </form>
+
+    <div>
+
+      <label for="username"><strong>Enter your name:</strong></label>
+
+      <input type="text" id="username" placeholder="Your name here" required>
+
+    </div>
+
+    <button id="submitBtn" onclick="submitQuiz()">Submit Answers</button>
+
+    <div id="score"></div>
+
+  </div>
+
+
+
+  <script>
+
+    const questions = [
+  {
+    "q": "যদি A = {1, 2, 3} এবং B = {3, 4, 5}, তবে A ∩ B = ?",
+    "options": [
+      "{1, 2}",
+      "{3}",
+      "{1, 2, 3}",
+      "{3, 4, 5}"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "শূন্য সেটের উপাদান সংখ্যা কত?",
+    "options": [
+      "0",
+      "1",
+      "অনন্ত",
+      "নির্ণয় করা যায় না"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "যদি A = {a, b} এবং B = {1, 2}, তবে A × B সেটে কতটি উপাদান থাকবে?",
+    "options": [
+      "2",
+      "4",
+      "1",
+      "8"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Venn চিত্রে একটি সেটকে উপস্থাপন করা হয়:",
+    "options": [
+      "তীরচিহ্ন দিয়ে",
+      "বৃত্ত দিয়ে",
+      "রেখা দিয়ে",
+      "ত্রিভুজ দিয়ে"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "যদি A ⊂ B হয়, তবে সেট A কে কী বলা হয়?",
+    "options": [
+      "উপসেট",
+      "সুপারসেট",
+      "শূন্য সেট",
+      "বিশেষ সেট"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "A ∪ A = ?",
+    "options": [
+      "শূন্য সেট",
+      "A",
+      "B",
+      "A ∩ A"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "A ∪ B = B ∪ A এই বৈশিষ্ট্যটি কী নামে পরিচিত?",
+    "options": [
+      "Associative",
+      "Distributive",
+      "Commutative",
+      "Identity"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A ∩ ϕ = ?",
+    "options": [
+      "A",
+      "ϕ",
+      "U",
+      "A ∪ ϕ"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "যদি দুটি সেটের ছেদ শূন্য সেট হয়, তবে সেট দুটি কেমন?",
+    "options": [
+      "উপসেট",
+      "মিলিত",
+      "বিচ্ছিন্ন",
+      "সমান"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "যদি A = {x : x একটি মৌলিক সংখ্যা < 10}, তবে A = ?",
+    "options": [
+      "{2, 3, 5, 7}",
+      "{1, 3, 5, 9}",
+      "{2, 4, 6, 8}",
+      "{3, 5, 7, 9}"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "U - A কী নির্দেশ করে?",
+    "options": [
+      "A এর কমপ্লিমেন্ট",
+      "A এর উপসেট",
+      "A এর সমষ্টি",
+      "A"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "ϕ ⊂ A কি সবসময় সত্য?",
+    "options": [
+      "হ্যাঁ",
+      "না",
+      "মাঝেমধ্যে",
+      "নির্ভর করে"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "যদি n(A) = 5 এবং n(B) = 3 এবং A ও B পরস্পরবিচ্ছিন্ন, তবে n(A ∪ B) = ?",
+    "options": [
+      "2",
+      "15",
+      "8",
+      "5"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Universal সেটকে সাধারণত কী দ্বারা বোঝানো হয়?",
+    "options": [
+      "A",
+      "B",
+      "U",
+      "ϕ"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A ∪ ϕ = ?",
+    "options": [
+      "ϕ",
+      "A",
+      "U",
+      "A ∩ ϕ"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "A ∩ U = ?",
+    "options": [
+      "ϕ",
+      "U",
+      "A",
+      "A ∪ U"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "যদি দুটি সেট সমান হয় তবে তারা:",
+    "options": [
+      "উপসেট",
+      "কমপ্লিমেন্ট",
+      "একই উপাদান বিশিষ্ট",
+      "সমান্তরাল"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Set builder ফর্মে সেট উপস্থাপন মানে:",
+    "options": [
+      "উপাদান লিখে",
+      "শর্ত দিয়ে",
+      "ছবি এঁকে",
+      "Venn diagram"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "A × ϕ = ?",
+    "options": [
+      "A",
+      "ϕ",
+      "U",
+      "A ∪ ϕ"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C) — এটি কোন বৈশিষ্ট্য?",
+    "options": [
+      "Associative",
+      "Commutative",
+      "Distributive",
+      "Identity"
+    ],
+    "answer": 2
+  }
+]
+
+    
+
+
+
+
+
+    const form = document.getElementById("quizForm");
+
+
+
+    questions.forEach((question, index) => {
+
+      const qDiv = document.createElement("div");
+
+      qDiv.classList.add("question");
+
+      qDiv.innerHTML = `<p><strong>Q${index + 1}:</strong> ${question.q}</p>`;
+
+
+
+      const optionsDiv = document.createElement("div");
+
+      optionsDiv.classList.add("options");
+
+
+
+      question.options.forEach((option, i) => {
+
+        const optionId = `q${index}_opt${i}`;
+
+        optionsDiv.innerHTML += `
+
+          <label>
+
+            <input type="radio" name="q${index}" value="${i}" id="${optionId}"> ${option}
+
+          </label>`;
+
+      });
+
+
+
+      qDiv.appendChild(optionsDiv);
+
+      form.appendChild(qDiv);
+
+    });
+
+
+
+    function submitQuiz() {
+
+      let score = 0;
+
+      for (let i = 0; i < questions.length; i++) {
+
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+
+        const questionDiv = document.querySelectorAll(".question")[i];
+
+
+
+        // Remove any existing feedback (if resubmitting)
+
+        const existingFeedback = questionDiv.querySelector(".feedback");
+
+        if (existingFeedback) existingFeedback.remove();
+
+
+
+        // Create feedback div
+
+        const feedback = document.createElement("div");
+
+        feedback.className = "feedback";
+
+        feedback.style.marginTop = "10px";
+
+
+
+        // Check answer
+
+        if (!selected) {
+
+          feedback.innerHTML = `<span style="color: red;">You did not answer this question.</span><br><strong>Correct answer:</strong> ${questions[i].options[questions[i].answer]}`;
+
+          questionDiv.appendChild(feedback);
+
+          continue;
+
+        }
+
+
+
+        if (parseInt(selected.value) === questions[i].answer) {
+
+          score++;
+
+          feedback.innerHTML = `<span style="color: green;">Correct!</span>`;
+
+        } else {
+
+          feedback.innerHTML = `<span style="color: red;">Incorrect.</span><br><strong>Correct answer:</strong> ${questions[i].options[questions[i].answer]}`;
+
+        }
+
+
+
+        questionDiv.appendChild(feedback);
+
+      }
+
+
+
+      document.getElementById("score").innerText = `You scored ${score} out of ${questions.length}`;
+
+
+
+      const userName = document.getElementById("username").value;
+
+      if (!userName) {
+
+        alert("Please enter your name before submitting.");
+
+        return;
+
+      }
+
+      const formData = new FormData();
+
+      formData.append("data", JSON.stringify({
+
+        username: userName,
+
+        score: score,
+
+        total: questions.length,
+
+        time: new Date().toLocaleString()
+
+      }));
+
+
+
+      fetch("https://script.google.com/macros/s/AKfycbxdA2vKXjAoSnZCFeZ0kAoMxqkKC8wd9Qqu7NkakDfhKA1gqs5br6YgvNwl-ZE5A9lr/exec", {
+
+        method: "POST",
+
+        body: formData
+
+      })
+
+        .then(res => res.json())
+
+        .then(data => console.log("Submitted successfully", data))
+
+        .catch(err => console.error("Error submitting:", err));
+
+      document.getElementById("submitBtn").disabled = true; // Prevent resubmission
+
+    }
+
+
+
+  </script>
+
+</body>
+
+
+
+</html>
